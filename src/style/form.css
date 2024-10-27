@@ -1,0 +1,38 @@
+.input-info {
+  position: relative;
+  width: 80%;
+  height: auto;
+  margin-top: 25px;
+}
+
+.input-info input {
+  width: 100%;
+  height: 35px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: white;
+  border-bottom: 2px solid white;
+}
+
+.input-info label {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  transition: .4s;
+  color: white;
+}
+
+.input-info input:focus ~ label {
+  top: -7px;
+  color: #0f172a;
+  font-size: 14px;
+}
+
+.input-info input:not(:placeholder-shown) ~ label {
+  top: -7px;
+  color: #0f172a;
+  font-size: 14px;
+}
