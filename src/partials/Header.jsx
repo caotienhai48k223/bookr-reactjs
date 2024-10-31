@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ImHome, ImSearch, ImBook } from "react-icons/im";
+import { ImSearch } from "react-icons/im";
 import { FaUser } from "react-icons/fa6";
 import { useLocation } from 'react-router-dom';
 
@@ -17,22 +17,15 @@ const Header = () => {
   }, [locationSearch])
 
   return (
-    <div className='flex flex-row bg-slate-900 pl-8 pr-8 font-mulish sticky top-0'>
-      <div className='basis-1/4 pt-3 pb-3'>
-        <img className='h-[50px]'
+    <div className='flex flex-row bg-slate-900 pl-8 pr-8 font-mulish sticky top-0 z-50'>
+      <div className='basis-1/4 py-2 flex justify-start'>
+        <a href="/" className='w-fit inline-block'>
+        <img className='h-[58px] w-auto'
           src="https://raw.githubusercontent.com/PacktPublishing/Web-Development-with-Django-Second-Edition/refs/heads/main/Chapter07/Exercise7.03/bookr/reviews/static/reviews/logo.png"
           alt="Logo" />
-      </div>
-      <div className='basis-2/4 flex flex-row items-center justify-between'>
-        <a href='/' className='h-[74px] flex items-center gap-2'>
-          <ImHome className='text-[20px] text-white' />
-          <div className='text-[20px] text-white'>Home</div>
-        </a>
-        <a href="/books" className='h-[74px] flex items-center gap-2'>
-          <ImBook className='text-[20px] text-white' />
-          <div className='text-[20px] text-white'>Bookcase</div>
         </a>
       </div>
+      <div className='basis-2/4'></div>
       <div className='basis-1/4 flex flex-row items-center justify-end gap-4'>
         <form action='/book-search' className="p-4 overflow-hidden w-[50px] h-[50px] hover:w-[65%] bg-slate-400  shadow-[2px_2px_20px_rgba(0,0,0,0.08)] rounded-full flex group items-center hover:duration-300 duration-300">
           <button className="flex items-center justify-center">

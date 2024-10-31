@@ -2,6 +2,7 @@ import { Navigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import api from "../api";
 import { useState, useEffect } from "react";
+import Loading from '../components/Loading';
 
 
 function ProtectedRoute({ children }) {
@@ -46,7 +47,7 @@ function ProtectedRoute({ children }) {
   };
 
   if (isAuthorized === null) {
-    return <div>Loading...</div>;
+    return <Loading/>;
   }
 
   return isAuthorized ? children : <Navigate to="/login" />;

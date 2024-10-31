@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import axios from 'axios';
 import NotFound from './NotFound';
 import api from "../api";
 import Loading from '../components/Loading';
@@ -17,7 +16,7 @@ const BookDetail = () => {
     const fetchBookDetail = async () => {
       setLoading(true)
       try {
-        const { data } = await axios.get(`http://localhost:8000/api-real/books/${id}/`);
+        const { data } = await api.get(`/api-real/books/${id}/`);
         setBook(data);
       } catch {
         setError('Book not found');
@@ -54,7 +53,7 @@ const BookDetail = () => {
   if (error) return <NotFound/> ;
 
   return (
-    <div className='bg-slate-400 font-mulish text-white'>
+    <div className='bg-slate-400 font-mulish text-white min-h-[81.5vh]'>
       <h1 className='text-[40px] bg-slate-600 text-white'>{book.title}</h1>
       <div>
         <p>Tiêu đề: {book.title}</p>
@@ -98,14 +97,16 @@ const BookDetail = () => {
         ) : (<p>Chưa có bình luận</p>)}
         <form onSubmit={createReview}>
           <input type="text" name='content' 
-          className='bg-slate-400'
-          required value={content} 
-          onChange={(e) => setContent(e.target.value)}/>
+            className='bg-slate-400  border-b-2 outline-none'
+            required value={content} 
+            onChange={(e) => setContent(e.target.value)}
+          />
           <br />
           <input type="number" name="rating" max={5} min={1} 
-          className='bg-slate-400'
-          required value={rating} 
-          onChange={(e) => setRating(e.target.value)} />
+            className='bg-slate-400  border-b-2 outline-none'
+            required value={rating} 
+            onChange={(e) => setRating(e.target.value)} 
+          />
           <br />
           <button>Submit</button>
         </form>

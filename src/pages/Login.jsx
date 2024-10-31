@@ -6,6 +6,7 @@ import { PiEyeClosed, PiEye } from "react-icons/pi";
 import { FaUserCheck } from "react-icons/fa6";
 import Loading from '../components/Loading';
 import '../style/form.css'
+import Truck from '../components/Truck';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -19,12 +20,13 @@ const Login = () => {
     setLoading(true)
     e.preventDefault();
     try {
-        const res = await api.post('http://localhost:8000/api-real/login/', {
+        const res = await api.post('/api-real/login/', {
             username,
             password
         });
         localStorage.setItem("access", res.data.access);
         localStorage.setItem("refresh", res.data.refresh);
+        localStorage.setItem("user", JSON.stringify(res.data.user));
         navigate("/")
         window.location.reload();
     } catch {
@@ -35,14 +37,14 @@ const Login = () => {
   };
 
   return (
-    <div className='font-mulish bg-slate-400'>
+    <div className='font-mulish bg-slate-400 min-h-[81.5vh]'>
       <h1 className='font-mulish text-[40px] bg-slate-600 text-white'>Login</h1>
       <br />
       <div className='flex justify-center'>
         <div className='w-2/5 p-10 border-slate-900 border-2'>
           {loading ? <Loading/>: <>
-          <div className='mb-5 flex justify-center'>
-            <FaUserCheck className='text-white text-[50px]'/>
+          <div className='mb-3 flex justify-center'>
+            <Truck/>
           </div>
           <form onSubmit={handleLogin}>
             <div className='flex justify-center'>

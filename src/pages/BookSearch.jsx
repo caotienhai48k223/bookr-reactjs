@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import axios from 'axios';
 import Loading from '../components/Loading';
+import api from "../api";
 
 const BookSearch = () => {
   const [books, setBooks] = useState([]);
@@ -22,7 +22,7 @@ const BookSearch = () => {
   const searchBook = async (query) => {
     setLoading(true)
     try {
-      const { data } = await axios.get(`http://localhost:8000/api-real/books/?q=${query}`);
+      const { data } = await api.get(`/api-real/books/?q=${query}`);
       if (data.length === 0) {
         setError('No matching books found')
       } else {
@@ -38,7 +38,7 @@ const BookSearch = () => {
   if (loading) return <Loading/>
 
   return (
-    <div>
+    <div className='min-h-[81.5vh]'>
       {error ? <p>{error}</p> : 
       books.map(book => (
         <>

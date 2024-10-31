@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
 import { ImPriceTags, ImCalendar, ImBarcode, ImStarHalf, ImStarFull } from "react-icons/im";
 import NotFound from './NotFound';
 import Loading from '../components/Loading';
+import api from "../api";
 
 const Books = () => {
   const [publishers, setPublishers] = useState([]);
@@ -13,7 +13,7 @@ const Books = () => {
     const fetchPublishers = async () => {
       setLoading(true)
       try {
-        const { data }= await axios.get('http://localhost:8000/api-real/publishers/');
+        const { data }= await api.get('/api-real/publishers/');
         setPublishers(data);
       } catch {
         setError('No information found about the book');
@@ -31,7 +31,7 @@ const Books = () => {
 
 
   return (
-    <div className='bg-slate-400 font-mulish pb-2'>
+    <div className='bg-slate-400 font-mulish pb-2 min-h-[81.5vh]'>
       <h1 className='text-[40px] bg-slate-600 text-white'>Our Bookshelf</h1>
       <br />
       <div className='ml-14 mr-14'>

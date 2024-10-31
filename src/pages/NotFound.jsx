@@ -3,7 +3,7 @@ import '../style/not-found.css'
 
 const NotFound = () => {
   return (
-    <div className='bg-slate-400 font-mulish text-white'>
+    <div className='bg-slate-400 font-mulish text-white min-h-[81.5vh]'>
       <h1 className='text-[40px] bg-slate-600 text-white'>Not Found</h1>
       <br />
       <div className='flex justify-center'>
